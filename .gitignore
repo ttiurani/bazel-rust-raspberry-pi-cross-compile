@@ -1,0 +1,21 @@
+# Ignore git
+.git/
+
+# Ignore Bazel Uutput symlinks
+bazel-*
+
+# Ignore Cargo/Maven builds
+target/
+
+# Ignore Eclipse files
+.project
+.classpath
+.cache*
+.settings/
+.externalToolBuilders
+
+# Ignore Sublime Text files
+*.sublime-workspace
+
+# Ignore OSX DS store
+.DS_Store
