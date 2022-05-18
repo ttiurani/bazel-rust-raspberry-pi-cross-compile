@@ -14,19 +14,19 @@ bazel_skylib_workspace()
 # Rust
 http_archive(
     name = "rules_rust",
-    sha256 = "929d2eea04ec752f03f1f3b8e44c9ca1901ad2902e1e366847032765835c9730",
-    strip_prefix = "rules_rust-2fa92e5a139c7cb64d606718273e295ce756f0f3",
+    sha256 = "edb87c0d2ba70823fe3df7862676d695599314a4634b9758bd55f0e8f19c2751",
     urls = [
-        # Change to rules_rust upstream with one extra commit
-        "https://github.com/ttiurani/rules_rust/archive/2fa92e5a139c7cb64d606718273e295ce756f0f3.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_rust/releases/download/0.4.0/rules_rust-v0.4.0.tar.gz",
+        "https://github.com/bazelbuild/rules_rust/releases/download/0.4.0/rules_rust-v0.4.0.tar.gz",
     ],
 )
+load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains", "rust_repository_set")
+rules_rust_dependencies()
 
-load("@rules_rust//rust:repositories.bzl", "rust_register_toolchains", "rust_repository_set")
 RUST_VERSION = "1.56.1"
 rust_register_toolchains(version = RUST_VERSION, edition="2018", rustfmt_version = RUST_VERSION)
 rust_repository_set(
-    name = "extendedmind_rust_apple_x86_64",
+    name = "my_rust_apple_x86_64",
     edition = "2018",
     version = RUST_VERSION,
     rustfmt_version = RUST_VERSION,
@@ -37,7 +37,7 @@ rust_repository_set(
 )
 
 rust_repository_set(
-    name = "extendedmind_rust_linux_x86_64",
+    name = "my_rust_linux_x86_64",
     edition = "2018",
     version = RUST_VERSION,
     rustfmt_version = RUST_VERSION,
