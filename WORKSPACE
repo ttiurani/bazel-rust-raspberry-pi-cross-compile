@@ -11,6 +11,12 @@ http_archive(
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 bazel_skylib_workspace()
 
+# CC Toolchains
+load("//third_party:deps.bzl", "deps")
+deps()
+load("//cc_toolchains:toolchains.bzl", "register_rpi_toolchain")
+register_rpi_toolchain()
+
 # Rust
 http_archive(
     name = "rules_rust",

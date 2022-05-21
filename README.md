@@ -1,5 +1,5 @@
 # bazel-rust-raspberry-pi-cross-compile
-Example on how cross-compilation failes on OSX and Linux with a Hello World Rust program, when trying to target 64bit ARM (Rasperry Pi 3).
+Example on how cross-compilation fails on Linux with a Hello World Rust program, when trying to target 64bit ARM (Rasperry Pi 3).
 
 ## Building to the Same Platform
 
@@ -9,7 +9,7 @@ $ ./bazel-bin/hello
 Hello World!
 ```
 
-## Building to Raspberry Pi
+## Building to Raspberry Pi on Linux
 
 ```shell
 $ bazel build //:hello --platforms //:arm64-linux --toolchain_resolution_debug=
