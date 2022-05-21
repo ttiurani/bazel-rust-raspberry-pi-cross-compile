@@ -1,0 +1,26 @@
+name: Build
+on: push
+jobs:
+  build:
+    name: Build for Raspberry Pi 3B(+)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache bazel
+        uses: actions/cache@v2
+        env:
+          cache-name: bazel-cache
+        with:
+          path: |
+            ~/.cache/bazelisk
+            ~/.cache/bazel
+          key: ${{ runner.os }}-${{ env.cache-name }}-r6
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Run Bazel build
+        uses: ttiurani/bazel-action@develop
+        with:
+          command: 'build //:hello --platforms //:arm64-linux --crosstool_top=//cc_toolchains/aarch64-rpi3-linux-gnu:gcc_toolchain --host_crosstool_top=@bazel_tools//tools/cpp:toolchain --cpu=aarch64 --incompatible_enable_cc_toolchain_resolution'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: hello-for-rasp
+          path: bazel-bin/hello
