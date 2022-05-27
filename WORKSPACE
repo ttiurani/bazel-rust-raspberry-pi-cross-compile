@@ -52,3 +52,6 @@ rust_repository_set(
         "aarch64-unknown-linux-gnu",
     ],
 )
+
+load("//third_party/cargo:crates.bzl", "raze_fetch_remote_crates")
+raze_fetch_remote_crates()
