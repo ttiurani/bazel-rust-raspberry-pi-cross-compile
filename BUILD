@@ -13,5 +13,6 @@ platform(
 rust_binary(
     name = "hello",
     srcs = glob(["src/**"]),
+    deps = ["//third_party/cargo:ring"],
 )
 
